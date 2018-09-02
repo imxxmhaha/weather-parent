@@ -1,0 +1,22 @@
+#项目容器端口
+server:
+  port: 7000
+
+
+spring:
+  # 热部署静态文件
+  thymeleaf:
+    cache: false
+  application:
+    name: micro-weather-report
+
+eureka:
+  client:  #客户端注册进eureka服务器列表内
+    service-url:
+#      defaultZone: http://localhost:9000/eureka
+      defaultZone: http://eureka9001.com:9001/eureka/,http://eureka9002.com:9002/eureka/,http://eureka9003.com:9003/eureka/
+  instance:
+    instance-id: micro-report-provider7000   #自定义服务名称信息
+    prefer-ip-address: true   #访问路径可以显示IP地址
+
+

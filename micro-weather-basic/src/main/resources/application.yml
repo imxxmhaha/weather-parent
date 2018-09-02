@@ -1,0 +1,50 @@
+
+
+spring:
+  application:
+    name: micro-weather-basic
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/pinyougoudb?characterEncoding=utf-8&useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+  #   数据源其他配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+  #   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall,log4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+
+#项目容器端口
+server:
+  port: 7001
+
+
+#mybatis配置文件位置,以及dao  xxx.xml配置文件
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mappers/*.xml
+  type-aliases-package: cn.xxm.pojo
+
+
+eureka:
+  client:  #客户端注册进eureka服务器列表内
+    service-url:
+#      defaultZone: http://localhost:9000/eureka
+      defaultZone: http://eureka9001.com:9001/eureka/,http://eureka9002.com:9002/eureka/,http://eureka9003.com:9003/eureka/
+  instance:
+    instance-id: micro-basic-provider7001   #自定义服务名称信息
+    prefer-ip-address: true   #访问路径可以显示IP地址
