@@ -29,6 +29,7 @@ public class WeatherController {
     @LoggerManage(description = "[根据城市查询天气预报]")
     public WeatherResponse getWeather(@PathVariable("cityName") String cityName){
         WeatherResponse response = weatherDataService.getDataByCityName(cityName);
+        log.info("查询到的response的信息是:"+response);
         return response;
     }
 

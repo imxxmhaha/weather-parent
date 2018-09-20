@@ -1,6 +1,7 @@
 package cn.xxm.services.impl;
 
 import cn.xxm.constant.WeatherConstant;
+import cn.xxm.service.BasicClientService;
 import cn.xxm.services.WeatherReportService;
 import cn.xxm.utils.JSONUtils;
 import cn.xxm.vo.City;
@@ -24,20 +25,25 @@ public class WeatherReportServiceImpl implements WeatherReportService {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    private BasicClientService basicClientService;
 
     /**
      * 根据城市名称查询天气信息
+     *
      * @param cityName
      * @return
      */
     @Override
     public Weather getDataByCityName(String cityName) {
-        WeatherResponse  weatherResponse = restTemplate.getForObject(WeatherConstant.WEATHER_BASIC_URL + cityName, WeatherResponse.class);
-        return weatherResponse.getData();
+//        WeatherResponse weatherResponse = restTemplate.getForObject(WeatherConstant.WEATHER_BASIC_URL + cityName, WeatherResponse.class);
+        WeatherResponse weatherResponse = basicClientService.getWeather(cityName);
+        return weatherResponse == null ? null : weatherResponse.getData();
     }
 
     /**
      * 获取城市列表
+     *
      * @return
      */
     @Override

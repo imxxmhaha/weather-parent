@@ -1,6 +1,7 @@
 package cn.xxm.controller;
 
 import cn.xxm.aop.logaop.LoggerManage;
+import cn.xxm.service.CityClientService;
 import cn.xxm.services.WeatherReportService;
 import cn.xxm.vo.City;
 import cn.xxm.vo.CityList;
@@ -26,6 +27,9 @@ public class WeatherReportController {
     @Autowired
     private WeatherReportService weatherReportService;
 
+    @Autowired
+    private CityClientService cityClientService;//Feign  声明接口的方式调用服务
+
     @GetMapping("/getWeather/{cityName}")
     @LoggerManage(description = "[查询天气预报]")
     public String getWeather(@PathVariable("cityName") String cityName , Model model){
@@ -33,7 +37,8 @@ public class WeatherReportController {
         // 具体查询城市的天气信息
         Weather weather = weatherReportService.getDataByCityName(cityName);
         // 需要城市列表
-        List<City> cityList =  weatherReportService.getCityList();
+//        List<City> cityList =  weatherReportService.getCityList();
+        List<City> cityList = cityClientService.getCityList();
 
         WeatherReportVo weatherReportVo = new WeatherReportVo(title,cityName,cityList,weather);
 

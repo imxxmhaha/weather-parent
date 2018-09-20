@@ -59,7 +59,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration><!-- 指定该Main Class为全局的唯一入口 -->
                     <finalName>weather-job</finalName>
-                    <mainClass>cn.xxm.QuartzJobApp</mainClass>
+                    <mainClass>cn.xxm.QuartzJobApp_7002</mainClass>
                     <layout>ZIP</layout>
                 </configuration>
                 <executions>

@@ -11,7 +11,7 @@ eureka:
   client:  #客户端注册进eureka服务器列表内
     service-url:
 #      defaultZone: http://localhost:9000/eureka
-      defaultZone: http://eureka9001.com:9001/eureka/,http://eureka9002.com:9002/eureka/,http://eureka9003.com:9003/eureka/
+      defaultZone: http://www.imxxm.top:9001/eureka/,http://www.imrose.top:9002/eureka/,http://www.itzw.top:9003/eureka/
   instance:
     instance-id: micro-quartz-provider7002   #自定义服务名称信息
     prefer-ip-address: true   #访问路径可以显示IP地址

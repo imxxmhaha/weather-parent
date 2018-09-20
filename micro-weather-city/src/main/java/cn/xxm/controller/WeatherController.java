@@ -26,7 +26,7 @@ public class WeatherController {
 
 
     @GetMapping("/getCityList")
-    @LoggerManage(description = "[获取城市列表]")
+//    @LoggerManage(description = "[获取城市列表]")
     public List<City> getCityList() {
         List<City> cityList = null;
         try {

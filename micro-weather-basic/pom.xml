@@ -96,7 +96,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration><!-- 指定该Main Class为全局的唯一入口 -->
                     <finalName>weather-basic</finalName>
-                    <mainClass>cn.xxm.WeatherBasicApp</mainClass>
+                    <mainClass>cn.xxm.WeatherBasicApp_7001</mainClass>
                     <layout>ZIP</layout>
                 </configuration>
                 <executions>

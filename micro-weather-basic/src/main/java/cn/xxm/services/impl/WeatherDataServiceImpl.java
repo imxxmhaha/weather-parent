@@ -49,6 +49,14 @@ public class WeatherDataServiceImpl implements WeatherDataService {
             String weatherString = redisTemplate.boundValueOps(RedisConstant.WEATHER_PRIFIX+cityName).get().toString();
             try {
                  response = JSONUtils.json2pojo(weatherString,WeatherResponse.class);
+                 log.info("从redis中查询到的response的data数据是: {}",response.getData());
+                 //如果redis中的data为null 删除redis中的key  重新访问api接口
+                if(null == response.getData()){
+                    log.info("redis中数据异常,删除之,重新请求,再缓存到redis");
+                    redisTemplate.delete(RedisConstant.WEATHER_PRIFIX+cityName);
+                    response = restTemplate.getForObject(uri, WeatherResponse.class);
+                    redisTemplate.boundValueOps(RedisConstant.WEATHER_PRIFIX+cityName).set(JSONUtils.obj2json(response),1800,TimeUnit.SECONDS);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
                 log.error("将redis中"+weatherString+"转为WeatherResponse对象异常");

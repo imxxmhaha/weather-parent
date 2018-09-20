@@ -51,7 +51,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration><!-- 指定该Main Class为全局的唯一入口 -->
                     <finalName>weather-city</finalName>
-                    <mainClass>cn.xxm.WeatherCityApp</mainClass>
+                    <mainClass>cn.xxm.WeatherCityApp_7003</mainClass>
                     <layout>ZIP</layout>
                 </configuration>
                 <executions>

@@ -25,6 +25,9 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
+
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
@@ -48,7 +51,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration><!-- 指定该Main Class为全局的唯一入口 -->
                     <finalName>weather-report</finalName>
-                    <mainClass>cn.xxm.WheaterReportWebApp</mainClass>
+                    <mainClass>cn.xxm.WheaterReportWebApp_7000</mainClass>
                     <layout>ZIP</layout>
                 </configuration>
                 <executions>

@@ -42,7 +42,7 @@ public class WeatherDataSyncJob extends QuartzJobBean {
                 String cityName = city.getCityName();
                 log.info("Weather Data Sync job , cityName:{}",cityName);
                 try {
-                    Thread.currentThread().sleep(10000);
+                    Thread.currentThread().sleep(8000);
                     weatherDataService.syncDataByCityName(cityName);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
