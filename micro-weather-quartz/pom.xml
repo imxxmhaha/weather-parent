@@ -30,6 +30,12 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
+        <!--feign相关-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
@@ -38,7 +44,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-quartz</artifactId>
-            <version>2.0.1.RELEASE</version>
+            <version>2.0.4.RELEASE</version>
         </dependency>
 
         <!-- 热部署 -->
@@ -48,17 +54,22 @@
             <optional>true</optional>
         </dependency>
 
+
+
+
+
     </dependencies>
 
 
     <build>
+
         <plugins>
             <plugin>
                 <!-- The plugin rewrites your manifest -->
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration><!-- 指定该Main Class为全局的唯一入口 -->
-                    <finalName>weather-job</finalName>
+                    <!--<finalName>weather-job</finalName>-->
                     <mainClass>cn.xxm.QuartzJobApp_7002</mainClass>
                     <layout>ZIP</layout>
                 </configuration>
@@ -68,12 +79,45 @@
                             <goal>repackage</goal><!--可以把依赖的包都打包到生成的Jar包中-->
                         </goals>
                         <!--可以生成不含依赖包的不可执行Jar包-->
-                        <!-- configuration>
-                          <classifier>exec</classifier>
-                        </configuration> -->
+                        <!--<configuration>-->
+                          <!--<classifier>exec</classifier>-->
+                        <!--</configuration>-->
                     </execution>
                 </executions>
             </plugin>
+
+
+            <!--**********不指定单元测试*************-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.20.1</version>
+                <configuration>
+                    <!-- 不指定单元测试 -->
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+
+
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>src/main/resources/assembly/assembly.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 

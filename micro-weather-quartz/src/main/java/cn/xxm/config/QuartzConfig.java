@@ -29,8 +29,9 @@ public class QuartzConfig {
     //Trigger
     @Bean
     public Trigger weatherDataSyncTrigger(){
-//        String corn = "0 25 0/2 * * ?";//每隔2小时执行一次20分开始
-        String corn = "0 0 12 * * ?";//每天12点执行一次
+//        String corn = "0/3 * * * * ?"; //每隔三秒执行一次
+        String corn = "0 05 6/8 * * ?";//每隔8小时执行一次20分开始
+//        String corn = "0 0 10 * * ?";//每天10点执行一次
         CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule(corn);
         return TriggerBuilder.newTrigger().forJob(weatherDataSyncJobDetail())
                 .withIdentity("weatherDataSyncTrigger")

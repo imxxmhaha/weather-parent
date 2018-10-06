@@ -17,7 +17,7 @@
 
         <select class="custom-select" id="selectCityId">
             <option th:each=" city :  ${weatherReportVo.cityList}"
-                    th:value="${city.cityName}" th:text="${city.cityName}"
+                    th:value="${city.cityId}" th:text="${city.cityName}"
                     th:selected="${city.cityName == weatherReportVo.cityName}">
             </option>
         </select>

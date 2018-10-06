@@ -1,4 +1,4 @@
-package cn.xxm.services;
+package cn.xxm.service;
 
 import cn.xxm.vo.City;
 

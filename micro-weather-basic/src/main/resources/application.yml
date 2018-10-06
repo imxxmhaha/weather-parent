@@ -31,7 +31,10 @@ spring:
 #项目容器端口
 server:
   port: 7001
-
+  undertow:
+    accesslog:
+      enabled: true
+      dir: /usr/local/logs
 
 #mybatis配置文件位置,以及dao  xxx.xml配置文件
 mybatis:

@@ -1,15 +1,12 @@
 package cn.xxm.job;
 
-import cn.xxm.services.WeatherDataService;
+import cn.xxm.service.WeatherDataService;
 import cn.xxm.vo.City;
-import cn.xxm.vo.CityList;
 import lombok.extern.slf4j.Slf4j;
-import org.omg.CORBA.PRIVATE_MEMBER;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.quartz.QuartzJobBean;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -40,10 +37,11 @@ public class WeatherDataSyncJob extends QuartzJobBean {
         if (null != cityList && cityList.size()>0){
             for (City city : cityList){
                 String cityName = city.getCityName();
+                String cityId = city.getCityId();
                 log.info("Weather Data Sync job , cityName:{}",cityName);
                 try {
-                    Thread.currentThread().sleep(8000);
-                    weatherDataService.syncDataByCityName(cityName);
+                    Thread.currentThread().sleep(5000);
+                    weatherDataService.syncDataByCityId(cityId,cityName);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

@@ -1,7 +1,6 @@
 package cn.xxm.controller;
 
-import cn.xxm.aop.logaop.LoggerManage;
-import cn.xxm.services.CityDataService;
+import cn.xxm.service.CityDataService;
 import cn.xxm.vo.City;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

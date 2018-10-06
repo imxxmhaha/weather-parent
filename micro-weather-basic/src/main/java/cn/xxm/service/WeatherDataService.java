@@ -1,4 +1,4 @@
-package cn.xxm.services;
+package cn.xxm.service;
 
 import cn.xxm.vo.WeatherResponse;
 
@@ -13,14 +13,16 @@ public interface WeatherDataService {
      * @param cityId
      * @return
      */
-//    WeatherResponse getDataByCityId(String cityId);
+    WeatherResponse getDataByCityId(String cityId,String cityName);
+
 
 
     /**
-     * 根据城市名称查询天气数据
-     *
-     * @param cityName
+     * 定时任务更新天气预报
+     * @param cityId
      * @return
      */
-    WeatherResponse getDataByCityName(String cityName);
+    WeatherResponse syncWeatherByCityId(String cityId,String cityName);
+
+
 }

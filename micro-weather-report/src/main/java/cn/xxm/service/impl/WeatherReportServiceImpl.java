@@ -1,15 +1,13 @@
-package cn.xxm.services.impl;
+package cn.xxm.service.impl;
 
 import cn.xxm.constant.WeatherConstant;
 import cn.xxm.service.BasicClientService;
-import cn.xxm.services.WeatherReportService;
+import cn.xxm.service.WeatherReportService;
 import cn.xxm.utils.JSONUtils;
 import cn.xxm.vo.City;
-import cn.xxm.vo.CityList;
 import cn.xxm.vo.Weather;
 import cn.xxm.vo.WeatherResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -27,6 +25,18 @@ public class WeatherReportServiceImpl implements WeatherReportService {
 
     @Autowired
     private BasicClientService basicClientService;
+
+    /**
+     * 根据城市cityId查询天气信息
+     *
+     * @param cityId
+     * @return
+     */
+    @Override
+    public Weather getDataByCityId(String cityId,String cityName) {
+        WeatherResponse weatherResponse = basicClientService.getWeatherByCityId(cityId,cityName);
+        return weatherResponse == null ? null : weatherResponse.getData();
+    }
 
     /**
      * 根据城市名称查询天气信息

@@ -13,10 +13,10 @@ public class WeatherResponse implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String date;
-    private String  message;
-    private Integer  status;
-    private String city;
-    private Integer count;
+    private String time;  //2018-09-23 15:14:44
+    private CityInfo cityInfo;
+    private String date;  //20180923
+    private String  message; //Success !
+    private Integer  status; //200
     private Weather data;
 }

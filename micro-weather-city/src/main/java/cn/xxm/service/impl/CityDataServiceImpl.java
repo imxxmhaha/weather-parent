@@ -1,6 +1,6 @@
-package cn.xxm.services.impl;
+package cn.xxm.service.impl;
 
-import cn.xxm.services.CityDataService;
+import cn.xxm.service.CityDataService;
 import cn.xxm.utils.XmlBuilder;
 import cn.xxm.vo.City;
 import cn.xxm.vo.CityList;

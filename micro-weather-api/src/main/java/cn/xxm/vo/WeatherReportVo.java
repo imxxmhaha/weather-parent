@@ -16,12 +16,17 @@ public class WeatherReportVo implements Serializable{
 
     private String title ;
     private String cityName;
+    private String cityId;
     private List<City> cityList;
     private Weather weather;
 
-    public WeatherReportVo(String title, String cityName, List<City> cityList, Weather weather) {
+
+    public WeatherReportVo() {
+    }
+    public WeatherReportVo(String title, String cityName, String cityId, List<City> cityList, Weather weather) {
         this.title = title;
         this.cityName = cityName;
+        this.cityId = cityId;
         this.cityList = cityList;
         this.weather = weather;
     }

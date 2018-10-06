@@ -4,9 +4,9 @@
  */
 $(function(){
     $("#selectCityId").change(function(){
-        var cityName = $("#selectCityId").val();
-        // alert(cityName);
-        var url = '/report/getWeather/'+cityName;
+        var cityId = $("#selectCityId").val();
+        // alert(cityId);
+        var url = '/report/getWeather/'+cityId;
         window.location.href = url;
     })
 });
